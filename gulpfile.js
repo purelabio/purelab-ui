@@ -12,7 +12,7 @@ const {fork} = require('child_process')
 const src = {
   root: 'src',
   html: 'src/html/**/*',
-  styleGlobs: ['src/styles/**/*.scss'],
+  styleGlobs: ['src/styles/**/*.scss', 'lib/styles/**/*.scss'],
   styleEntryFiles: ['src/styles/main.scss'],
 }
 

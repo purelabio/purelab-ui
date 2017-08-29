@@ -22,6 +22,7 @@ module.exports = {
         test: /\.js$/,
         include: [
           fs.realpathSync('src'),
+          fs.realpathSync('lib'),
         ],
         use: {
           loader: 'babel-loader',
@@ -37,6 +38,12 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
+
+  resolve: {
+    alias: {
+      lib: pt.resolve(__dirname, './lib/scripts/'),
+    },
+  },
 
   // For dev middleware
   stats: {

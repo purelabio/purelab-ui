@@ -1,0 +1,141 @@
+.pl-button-transition {
+  transition: background-color $pl-transition-duration-medium $pl-transition-function-ripple,
+                    box-shadow $pl-transition-duration-medium $pl-transition-function-ripple;
+}
+
+.pl-button {
+  @extend .relative;
+  @extend .overflow-hidden;
+
+  @extend .rounded;
+  @extend .padding-1-h;
+  @extend .padding-0x5-v;
+  @extend .font-small;
+  @extend .text-uppercase;
+  @extend .text-center;
+  @extend .weight-bold;
+  @extend .pl-button-transition;
+  line-height: 1.25rem;
+  min-width: 5.5rem;
+}
+
+.pl-button-raised {
+  @extend .pl-button;
+
+  .pl-ripple-container {
+    @extend .bg-white-12;
+    .theme-bg-primary & {
+      @extend .bg-black-12;
+    }
+  }
+
+  @extend .bg-primary;
+  @extend .fg-white;
+  .theme-bg-primary & {
+    @extend .bg-white;
+    @extend .fg-primary;
+  }
+
+  &:hover,
+  &.hover {
+    box-shadow: 0 0 2px 0 $color-black-12, 0 2px 2px 0 $color-black-20;
+  }
+
+  &:active,
+  &.active {
+    box-shadow: 0 0 8px 0 $color-black-12, 0 8px 8px 0 $color-black-20;
+    background-color: mix($color-white-12, $color-primary);
+
+    .theme-bg-primary & {
+      @extend .bg-white;
+      @extend .fg-primary;
+    }
+  }
+
+  &[disabled],
+  &.disabled {
+    @extend .bg-black-20;
+    @extend .fg-black-37;
+
+    .theme-bg-primary & {
+      @extend .bg-white-12;
+      @extend .fg-white-30;
+    }
+  }
+}
+
+.pl-button-flat {
+  @extend .pl-button;
+
+  .pl-ripple-container {
+    @extend .bg-black-12;
+    .theme-bg-primary & {
+      @extend .bg-white-12;
+    }
+  }
+
+  @extend .fg-primary;
+  .theme-bg-primary & {
+    @extend .fg-white;
+  }
+
+  &:hover,
+  &.hover {
+    @extend .bg-black-06;
+    .theme-bg-primary & {
+      @extend .bg-white-07;
+    }
+  }
+
+  &:active,
+  &.active {
+    @extend .bg-black-12;
+    .theme-bg-primary & {
+      @extend .bg-white-30;
+    }
+  }
+
+  &[disabled],
+  &.disabled {
+    @extend .fg-black-37;
+    .theme-bg-primary & {
+      @extend .fg-white-30;
+    }
+  }
+}
+
+.pl-ripple-container {
+  @extend .block;
+  @extend .circle;
+  @extend .abs;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  transform: translate(-50%, -50%) scale(1, 1);
+  transform-origin: 50% 50%;
+  opacity: 0;
+
+  &::before {
+    @extend .block;
+    content: '';
+    padding-bottom: 100%;
+  }
+
+  &.--animate {
+    animation: pl-ripple $pl-transition-duration-medium ease-in-out;
+  }
+}
+
+@keyframes pl-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
