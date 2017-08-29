@@ -5,6 +5,7 @@
 @import '../../lib/styles/reset';
 @import '../../lib/styles/variables';
 @import '../../lib/styles/typography';
+@import '../../lib/styles/global';
 
 @include sb-color('primary', $color-primary);
 
