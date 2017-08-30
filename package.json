@@ -2,7 +2,11 @@
   "name": "purelab-ui",
   "version": "0.0.1",
   "description": "UI components based on React, Prax, Stylebox and Material Design",
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/purelabio/purelab-ui.git"
+  },
+  "author": "Purelab <info@purelab.io>",
   "license": "MIT",
   "scripts": {
     "start": "gulp",
