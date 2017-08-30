@@ -1,6 +1,7 @@
 {
   "name": "purelab-ui",
   "version": "0.0.1",
+  "main": "lib/scripts/index.js",
   "description": "UI components based on React, Prax, Stylebox and Material Design",
   "repository": {
     "type": "git",
