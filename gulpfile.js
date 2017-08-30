@@ -12,6 +12,9 @@ const {fork} = require('child_process')
 const src = {
   root: 'src',
   html: 'src/html/**/*',
+  static: 'src/static/**/*',
+  staticFonts: 'node_modules/mdi/fonts/**/*',
+  staticFontsBase: 'node_modules/mdi',
   styleGlobs: ['src/styles/**/*.scss', 'lib/styles/**/*.scss'],
   styleEntryFiles: ['src/styles/main.scss'],
 }
@@ -28,6 +31,21 @@ const out = {
 gulp.task('clear', () => (
   del(out.root).catch(console.error.bind(console))
 ))
+
+/**
+ * Static
+ */
+
+gulp.task('static:copy', () => (
+  gulp.src(src.static)
+    .pipe(gulp.src(src.staticFonts, {base: src.staticFontsBase, passthrough: true}))
+    .pipe(gulp.dest(out.root))
+))
+
+gulp.task('static:watch', () => {
+  $.watch(src.static, gulp.series('static:copy'))
+  $.watch(src.staticFonts, gulp.series('static:copy'))
+})
 
 /**
  * HTML
@@ -82,11 +100,13 @@ gulp.task('devserver', () => {
  */
 
 gulp.task('buildup', gulp.parallel(
+  'static:copy',
   'html:build',
   'styles:build'
 ))
 
 gulp.task('watch', gulp.parallel(
+  'static:watch',
   'html:watch',
   'styles:watch',
   'devserver'

@@ -139,3 +139,34 @@
     opacity: 0;
   }
 }
+
+.pl-action-button {
+  @extend .relative;
+  @extend .overflow-hidden;
+
+  @extend .circle;
+  @extend .padding-1;
+  @extend .bg-accent;
+  @extend .fg-white;
+  @extend .pl-button-transition;
+  box-shadow: 0 0 6px 0 $color-black-12, 0 6px 6px 0 $color-black-20;
+
+  .pl-ripple-container {
+    @extend .bg-black-06;
+  }
+
+  &:hover,
+  &.hover {
+    box-shadow: 0 0 8px 0 $color-black-12, 0 8px 8px 0 $color-black-20;
+  }
+
+  &:active,
+  &.active {
+    box-shadow: 0 0 12px 0 $color-black-12, 0 12px 12px 0 $color-black-20;
+  }
+
+  &[disabled],
+  &.disabled {
+    background-color: mix($color-white-12, $color-accent);
+  }
+}

@@ -1,0 +1,8 @@
+body {
+  @extend .bg-black-06;
+}
+
+.theme-bg-primary {
+  @extend .fg-white;
+  @extend .bg-primary;
+}

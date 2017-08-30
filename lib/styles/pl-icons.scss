@@ -1,0 +1,33 @@
+@import 'node_modules/mdi/scss/_variables';
+@import 'node_modules/mdi/scss/_functions';
+@import 'node_modules/mdi/scss/_path';
+@import 'node_modules/mdi/scss/_core';
+@import 'node_modules/mdi/scss/icons';
+
+.mdi {
+  @extend .row-center-center;
+  @extend .mdi-1;
+  line-height: 1;
+}
+
+// Ensure proper centering. The :not(:root) selector raises specificity to
+// override the default inline-block style.
+.mdi::before:not(:root) {
+  @extend .row-center-center;
+  line-height: 1;
+}
+
+.mdi-0x25 {font-size: 0.25rem}
+.mdi-0x5  {font-size: 0.5rem}
+.mdi-0x75 {font-size: 0.75rem}
+.mdi-1    {font-size: 1rem}
+.mdi-1x25 {font-size: 1.25rem}
+.mdi-1x5  {font-size: 1.5rem}
+.mdi-1x75 {font-size: 1.75rem}
+.mdi-2    {font-size: 2rem}
+
+.mdi.--larger {@extend .mdi-1x5;}
+.mdi.--double {@extend .mdi-2;}
+
+.mdi.--larger-em {font-size: 1.5em}
+.mdi.--double-em {font-size: 2em}
