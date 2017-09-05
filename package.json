@@ -7,13 +7,13 @@
     "type": "git",
     "url": "git+https://github.com/purelabio/purelab-ui.git"
   },
-  "author": "Purelab <info@purelab.io>",
+  "author": "Purelab team <info@purelab.io>",
   "license": "MIT",
   "scripts": {
     "start": "gulp",
     "watch": "gulp watch"
   },
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "6.21.0",
     "babel-eslint": "7.1.1",
     "babel-loader": "6.2.10",
@@ -51,13 +51,15 @@
     "gulp-sass": "3.1.0",
     "gulp-watch": "4.3.11",
     "lodash": "4.17.4",
-    "mdi": "1.9.33",
     "prax": "0.1.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "stylebox": "0.0.10",
     "webpack": "2.2.1",
     "webpack-dev-middleware": "1.10.1",
     "webpack-hot-middleware": "2.17.1"
+  },
+  "dependencies": {
+    "mdi": "1.9.33",
+    "stylebox": "0.0.10",
   }
 }

@@ -23,43 +23,43 @@
   @extend .pl-button;
 
   .pl-ripple-container {
-    @extend .bg-white-12;
+    background-color: $pl-color-white-300;
     .theme-bg-primary & {
-      @extend .bg-black-12;
+      background-color: $pl-color-black-300;
     }
   }
 
-  @extend .bg-primary;
-  @extend .fg-white;
+  background-color: $pl-color-primary;
+  color: $pl-color-white;
   .theme-bg-primary & {
-    @extend .bg-white;
-    @extend .fg-primary;
+    background-color: $pl-color-white;
+    color: $pl-color-primary;
   }
 
   &:hover,
   &.hover {
-    box-shadow: 0 0 2px 0 $color-black-12, 0 2px 2px 0 $color-black-20;
+    box-shadow: 0 0 2px 0 $pl-color-black-300, 0 2px 2px 0 $pl-color-black-400;
   }
 
   &:active,
   &.active {
-    box-shadow: 0 0 8px 0 $color-black-12, 0 8px 8px 0 $color-black-20;
-    background-color: mix($color-white-12, $color-primary);
+    box-shadow: 0 0 8px 0 $pl-color-black-300, 0 8px 8px 0 $pl-color-black-400;
+    background-color: mix($pl-color-white-300, $pl-color-primary);
 
     .theme-bg-primary & {
-      @extend .bg-white;
-      @extend .fg-primary;
+      background-color: $pl-color-white;
+      color: $pl-color-primary;
     }
   }
 
   &[disabled],
   &.disabled {
-    @extend .bg-black-20;
-    @extend .fg-black-37;
+    background-color: $pl-color-black-400;
+    color: $pl-color-black-500;
 
     .theme-bg-primary & {
-      @extend .bg-white-12;
-      @extend .fg-white-30;
+      background-color: $pl-color-white-300;
+      background-color: $pl-color-white-400;
     }
   }
 }
@@ -68,38 +68,38 @@
   @extend .pl-button;
 
   .pl-ripple-container {
-    @extend .bg-black-12;
+    background-color: $pl-color-black-300;
     .theme-bg-primary & {
-      @extend .bg-white-12;
+      background-color: $pl-color-white-300;
     }
   }
 
-  @extend .fg-primary;
+  color: $pl-color-primary;
   .theme-bg-primary & {
-    @extend .fg-white;
+    color: $pl-color-white;
   }
 
   &:hover,
   &.hover {
-    @extend .bg-black-06;
+    background-color: $pl-color-black-100;
     .theme-bg-primary & {
-      @extend .bg-white-07;
+      background-color: $pl-color-white-100;
     }
   }
 
   &:active,
   &.active {
-    @extend .bg-black-12;
+    background-color: $pl-color-black-300;
     .theme-bg-primary & {
-      @extend .bg-white-30;
+      background-color: $pl-color-white-400;
     }
   }
 
   &[disabled],
   &.disabled {
-    @extend .fg-black-37;
+    color: $pl-color-black-500;
     .theme-bg-primary & {
-      @extend .fg-white-30;
+      color: $pl-color-white-400;
     }
   }
 }
@@ -146,27 +146,27 @@
 
   @extend .circle;
   @extend .padding-1;
-  @extend .bg-accent;
-  @extend .fg-white;
   @extend .pl-button-transition;
-  box-shadow: 0 0 6px 0 $color-black-12, 0 6px 6px 0 $color-black-20;
+  box-shadow: 0 0 6px 0 $pl-color-black-300, 0 6px 6px 0 $pl-color-black-400;
+  background-color: $pl-color-accent;
+  color: $pl-color-white;
 
   .pl-ripple-container {
-    @extend .bg-black-06;
+    background-color: $pl-color-black-100;
   }
 
   &:hover,
   &.hover {
-    box-shadow: 0 0 8px 0 $color-black-12, 0 8px 8px 0 $color-black-20;
+    box-shadow: 0 0 8px 0 $pl-color-black-300, 0 8px 8px 0 $pl-color-black-400;
   }
 
   &:active,
   &.active {
-    box-shadow: 0 0 12px 0 $color-black-12, 0 12px 12px 0 $color-black-20;
+    box-shadow: 0 0 12px 0 $pl-color-black-300, 0 12px 12px 0 $pl-color-black-400;
   }
 
   &[disabled],
   &.disabled {
-    background-color: mix($color-white-12, $color-accent);
+    background-color: mix($pl-color-white-300, $pl-color-accent);
   }
 }

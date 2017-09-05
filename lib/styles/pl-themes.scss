@@ -1,8 +1,9 @@
 body {
-  @extend .bg-black-06;
+  background-color: $pl-color-black-100;
+  color: $pl-color-black-700;
 }
 
 .theme-bg-primary {
-  @extend .fg-white;
-  @extend .bg-primary;
+  background-color: $pl-color-primary;
+  color: $pl-color-white;
 }

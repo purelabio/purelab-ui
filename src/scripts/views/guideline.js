@@ -6,7 +6,7 @@ export class Section extends PraxComponent {
     const {title, single, children} = this.props
 
     return (
-      <div className='col-start-stretch padding-2 children-margin-2-v fg-black-54'>
+      <div className='col-start-stretch padding-2 children-margin-2-v fg-black-600'>
         {!title ? null :
         <h2 className='weight-bold padding-2-h'>
           {title}
