@@ -22,13 +22,6 @@
 .pl-button-raised {
   @extend .pl-button;
 
-  .pl-ripple-container {
-    background-color: $pl-color-white-300;
-    .theme-bg-primary & {
-      background-color: $pl-color-black-300;
-    }
-  }
-
   background-color: $pl-color-primary;
   color: $pl-color-white;
   .theme-bg-primary & {
@@ -66,13 +59,6 @@
 
 .pl-button-flat {
   @extend .pl-button;
-
-  .pl-ripple-container {
-    background-color: $pl-color-black-300;
-    .theme-bg-primary & {
-      background-color: $pl-color-white-300;
-    }
-  }
 
   color: $pl-color-primary;
   .theme-bg-primary & {
@@ -123,6 +109,20 @@
 
   &.--animate {
     animation: pl-ripple $pl-transition-duration-medium ease-in-out;
+  }
+
+  .pl-button-raised & {
+    background-color: $pl-color-white-300;
+    .theme-bg-primary & {
+      background-color: $pl-color-black-300;
+    }
+  }
+
+  .pl-button-flat & {
+    background-color: $pl-color-black-300;
+    .theme-bg-primary & {
+      background-color: $pl-color-white-300;
+    }
   }
 }
 
