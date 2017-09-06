@@ -11,20 +11,13 @@
     ["transform-es2015-destructuring", {"loose": true}],
     "transform-es2015-function-name",
     "transform-es2015-literals",
-    "transform-es2015-modules-commonjs",
     "transform-es2015-parameters",
     "transform-es2015-shorthand-properties",
     ["transform-es2015-spread", {"loose": true}],
     "transform-es2015-template-literals",
     "transform-exponentiation-operator",
     "syntax-trailing-function-commas",
-    ["transform-runtime", {"polyfill": false}],
     ["transform-object-rest-spread", {"loose": true}],
-    "transform-react-jsx",
-    ["transform-regenerator", {
-      "asyncGenerators": false,
-      "generators": true,
-      "async": false
-    }]
+    "transform-react-jsx"
   ]
 }

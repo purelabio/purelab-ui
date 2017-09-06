@@ -1,7 +1,13 @@
 {
   "name": "purelab-ui",
   "version": "0.0.1",
-  "main": "lib/scripts/index.js",
+  "main": "dist/purelab-ui.js",
+  "module": "es/purelab-ui.js",
+  "scripts": {
+    "start": "(rollup -cw & gulp)",
+    "compile": "rollup -c",
+    "prepublishOnly": "npm run compile"
+  },
   "description": "UI components based on React, Prax, Stylebox and Material Design",
   "repository": {
     "type": "git",
@@ -9,9 +15,12 @@
   },
   "author": "Purelab team <info@purelab.io>",
   "license": "MIT",
-  "scripts": {
-    "start": "gulp",
-    "watch": "gulp watch"
+  "dependencies": {
+    "mdi": "1.9.33",
+    "stylebox": "0.0.10"
+  },
+  "peerDependencies": {
+    "prax": "*"
   },
   "devDependencies": {
     "babel-core": "6.21.0",
@@ -36,7 +45,6 @@
     "babel-plugin-transform-exponentiation-operator": "6.22.0",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-plugin-transform-react-jsx": "6.23.0",
-    "babel-plugin-transform-regenerator": "6.24.1",
     "babel-plugin-transform-runtime": "6.23.0",
     "browser-sync": "2.18.8",
     "eslint-config-airbnb": "14.1.0",
@@ -54,12 +62,11 @@
     "prax": "0.1.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
+    "rollup": "0.49.2",
+    "rollup-plugin-babel": "3.0.2",
+    "rollup-plugin-uglify": "2.0.1",
     "webpack": "2.2.1",
     "webpack-dev-middleware": "1.10.1",
     "webpack-hot-middleware": "2.17.1"
-  },
-  "dependencies": {
-    "mdi": "1.9.33",
-    "stylebox": "0.0.10",
   }
 }

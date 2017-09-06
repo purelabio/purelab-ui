@@ -130,3 +130,5 @@ yarn.lock
 
 # Built
 dist
+es
+gh-pages
