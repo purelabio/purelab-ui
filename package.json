@@ -16,11 +16,13 @@
   "author": "Purelab team <info@purelab.io>",
   "license": "MIT",
   "dependencies": {
-    "mdi": "1.9.33",
-    "stylebox": "0.0.10"
+    "emerge": "^0.1.0",
+    "fpx": "^0.3.0",
+    "mdi": "^1.9.33",
+    "stylebox": "^0.0.10"
   },
   "peerDependencies": {
-    "prax": "*"
+    "react": "*"
   },
   "devDependencies": {
     "babel-core": "6.21.0",
