@@ -6,6 +6,7 @@
   "scripts": {
     "start": "(rollup -cw & gulp)",
     "compile": "rollup -c",
+    "preinstall": "npm run compile",
     "prepublishOnly": "npm run compile"
   },
   "description": "UI components based on React, Prax, Stylebox and Material Design",
