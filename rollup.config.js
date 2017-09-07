@@ -1,3 +1,5 @@
+'use strict'
+
 const external = ['react', 'react-dom', 'emerge', 'fpx']
 
 module.exports = [

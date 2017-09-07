@@ -39,7 +39,7 @@
     "babel-core": "6.21.0",
     "babel-loader": "6.2.10",
     "browser-sync": "2.18.8",
-    "eslint-config-purelab": "github:purelabio/eslint-config-purelab",
+    "eslint-config-purelab": "github:purelabio/eslint-config-purelab#eee59fc1cdfbb8982d2929ddff73e167512b32fe",
     "eslint_d": "4.2.4",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "3.1.1",
