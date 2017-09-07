@@ -1,6 +1,4 @@
-'use strict'
-
-const external = ['prax']
+const external = ['react', 'react-dom', 'emerge', 'fpx']
 
 module.exports = [
   {
