@@ -1,7 +1,8 @@
 {
   "extends": "purelab",
-  "globals": {
-    "_": true,
-    "React": true
+  "env": {
+    "browser": false,
+    "node": true,
+    "es6": true
   }
 }
