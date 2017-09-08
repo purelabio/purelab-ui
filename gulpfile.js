@@ -1,9 +1,9 @@
 'use strict'
 
 const $ = require('gulp-load-plugins')()
+const bs = require('browser-sync').create()
 const del = require('del')
 const gulp = require('gulp')
-const {fork} = require('child_process')
 
 /**
  * Globals
@@ -79,21 +79,19 @@ gulp.task('styles:watch', () => {
  * Devserver + Scripts
  */
 
-gulp.task('devserver', () => {
-  let proc
-
-  process.on('exit', () => {
-    if (proc) proc.kill()
+gulp.task('devserver', () => (
+  bs.init({
+    startPath: '/',
+    server: {baseDir: 'dist'},
+    port: 23888,
+    files: 'dist',
+    open: false,
+    online: false,
+    ui: false,
+    ghostMode: false,
+    notify: false,
   })
-
-  function restart() {
-    if (proc) proc.kill()
-    proc = fork('./devserver')
-  }
-
-  restart()
-  $.watch(['./webpack.config.js', './devserver.js'], restart)
-})
+))
 
 /**
  * Default
@@ -111,5 +109,7 @@ gulp.task('watch', gulp.parallel(
   'styles:watch',
   'devserver'
 ))
+
+gulp.task('build', gulp.series('clear', 'buildup'))
 
 gulp.task('default', gulp.series('clear', gulp.series('buildup', 'watch')))

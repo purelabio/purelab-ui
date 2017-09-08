@@ -1,22 +1,13 @@
 /* eslint-disable no-multi-assign */
 
-// This must be executed before any other code.
-if (module.hot) {
-  module.hot.accept(err => {
-    console.warn('Exception during HMR update.', err)
-  })
-  module.hot.dispose(() => {
-    console.clear()
-  })
-}
-
-const {Env} = require('./env')
+import * as prax from 'prax'
+import {Env} from './env'
 
 window.app = {}
 
 const prevEnv = window.app.env
 
-export const env = window.app.env = new Env()
+const env = window.app.env = new Env()
 
 try {
   env.init(prevEnv)
@@ -29,8 +20,6 @@ catch (err) {
 /**
  * REPL
  */
-
-const prax = require('prax')
 
 window.app = {React, ...window.app, ...prax, prax, env}
 
