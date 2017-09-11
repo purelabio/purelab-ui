@@ -1,5 +1,5 @@
-import {Agent, patch, derefIn} from 'prax'
-import {Dom} from './components/dom'
+const {Agent, patch, derefIn} = require('prax')
+const {Dom} = require('./components/dom')
 
 export class Env extends Agent {
   init (prevEnv) {
