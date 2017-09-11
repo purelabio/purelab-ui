@@ -8,7 +8,11 @@ module.exports = [
     output: {file: 'es/purelab-ui.js', format: 'es'},
     external,
     plugins: [
-      require('rollup-plugin-babel')({exclude: 'node_modules/**'}),
+      require('rollup-plugin-babel')({
+        exclude: 'node_modules/**',
+        plugins: ['external-helpers'],
+        externalHelpers: true,
+      }),
     ],
   },
   {
