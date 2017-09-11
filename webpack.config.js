@@ -1,16 +1,20 @@
 'use strict'
 
-const fs = require('fs')
 const pt = require('path')
 const webpack = require('webpack')
 
+const PROD = process.env.NODE_ENV === 'production'
+
+const SRC_DIR = pt.resolve('docs/scripts')
+const PUBLIC_DIR = pt.resolve('gh-pages/scripts')
+
 module.exports = {
   entry: {
-    main: pt.resolve('src/scripts/main.js'),
+    main: pt.join(SRC_DIR, 'main.js'),
   },
 
   output: {
-    path: pt.resolve('dist/scripts'),
+    path: PUBLIC_DIR,
     filename: '[name].js',
     // For dev middleware
     publicPath: '/scripts/',
@@ -21,13 +25,19 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
-          fs.realpathSync('src'),
-          fs.realpathSync('lib'),
+          pt.resolve('docs'),
+          pt.resolve('src'),
         ],
-        use: {
-          loader: 'babel-loader',
-        },
+        use: {loader: 'babel-loader'},
       },
+      ...(!PROD ? [] : [
+        // disable dev features and warnings in React and related libs
+        {
+          test: /react.*\.jsx?$/,
+          include: /node_modules/,
+          use: {loader: 'transform-loader', options: {envify: true}},
+        },
+      ]),
     ],
   },
 
@@ -36,21 +46,34 @@ module.exports = {
       _: 'lodash',
       React: 'react',
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    ...(PROD ? [
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: process.env.NODE_ENV || 'development',
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        mangle: true,
+        toplevel: true,
+        compress: {warnings: false},
+      }),
+    ] : [
+      new webpack.HotModuleReplacementPlugin(),
+    ]),
   ],
 
   resolve: {
     alias: {
-      lib: pt.resolve(__dirname, './lib/scripts/'),
+      'purelab-ui': pt.resolve(__dirname, './src/scripts/'),
     },
   },
 
-  // For dev middleware
+  devtool: PROD ? 'source-map' : false,
+
   stats: {
-    colors: true,
-    chunks: false,
-    version: false,
-    hash: false,
     assets: false,
+    colors: true,
+    hash: false,
+    modules: false,
+    timings: true,
+    version: false,
   },
 }

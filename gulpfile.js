@@ -3,83 +3,122 @@
 const $ = require('gulp-load-plugins')()
 const del = require('del')
 const gulp = require('gulp')
+const {obj: passthrough} = require('through2')
+const webpack = require('webpack')
 const {fork} = require('child_process')
+
+const webpackConfig = require('./webpack.config')
 
 /**
  * Globals
  */
 
-const src = {
-  root: 'src',
-  html: 'src/html/**/*',
-  static: 'src/static/**/*',
+const docSrc = {
+  root: 'docs',
+  html: 'docs/html/**/*',
+  static: 'docs/static/**/*',
   staticFonts: 'node_modules/mdi/fonts/**/*',
   staticFontsBase: 'node_modules/mdi',
-  styleGlobs: ['src/styles/**/*.scss', 'lib/styles/**/*.scss'],
-  styleEntryFiles: ['src/styles/main.scss'],
+  styleGlobs: ['docs/styles/**/*.scss', 'src/styles/**/*.scss'],
+  styleEntryFiles: ['docs/styles/main.scss'],
 }
 
-const out = {
-  root: 'dist',
-  styles: 'dist/styles',
+const docOut = {
+  root: 'gh-pages',
+  styles: 'gh-pages/styles',
 }
+
+const prod = process.env.NODE_ENV === 'production'
+
+const autoprefixerSettings = {browsers: ['> 1%', 'IE >= 9', 'iOS 7']}
+
+const cssCleanSettings = {
+  keepSpecialComments: 0,
+  aggressiveMerging: false,
+  advanced: false,
+  // Don't inline `@import: url()`
+  processImport: false,
+}
+
+const Err = (key, msg) => new $.util.PluginError(key, msg, {showProperties: false})
 
 /**
  * Clear
  */
 
-gulp.task('clear', () => (
-  del(out.root).catch(console.error.bind(console))
+gulp.task('docs:clear', () => (
+  del(docOut.root).catch(console.error.bind(console))
 ))
 
 /**
  * Static
  */
 
-gulp.task('static:copy', () => (
-  gulp.src(src.static)
-    .pipe(gulp.src(src.staticFonts, {base: src.staticFontsBase, passthrough: true}))
-    .pipe(gulp.dest(out.root))
+gulp.task('docs:static:copy', () => (
+  gulp.src(docSrc.static)
+    .pipe(gulp.src(docSrc.staticFonts, {base: docSrc.staticFontsBase, passthrough: true}))
+    .pipe(gulp.dest(docOut.root))
 ))
 
-gulp.task('static:watch', () => {
-  $.watch(src.static, gulp.series('static:copy'))
-  $.watch(src.staticFonts, gulp.series('static:copy'))
+gulp.task('docs:static:watch', () => {
+  $.watch(docSrc.static, gulp.series('docs:static:copy'))
+  $.watch(docSrc.staticFonts, gulp.series('docs:static:copy'))
 })
 
 /**
  * HTML
  */
 
-gulp.task('html:build', () => (
-  gulp.src(src.html)
-    .pipe(gulp.dest(out.root))
+gulp.task('docs:html:build', () => (
+  gulp.src(docSrc.html)
+    .pipe(gulp.dest(docOut.root))
 ))
 
-gulp.task('html:watch', () => {
-  $.watch(src.html, gulp.series('html:build'))
+gulp.task('docs:html:watch', () => {
+  $.watch(docSrc.html, gulp.series('docs:html:build'))
 })
+
+/**
+ * Scripts
+ */
+
+gulp.task('docs:scripts:build', done => {
+  buildWithWebpack(webpackConfig, done)
+})
+
+function buildWithWebpack (config, done) {
+  return webpack(config, (err, stats) => {
+    if (err) {
+      done(Err('webpack', err))
+    }
+    else {
+      $.util.log('[webpack]', stats.toString(config.stats))
+      done(stats.hasErrors() ? Err('webpack', 'plugin error') : null)
+    }
+  })
+}
 
 /**
  * Styles
  */
 
-gulp.task('styles:build', () => (
-  gulp.src(src.styleEntryFiles)
-    .pipe($.sass({includePaths: [src.root]}))
-    .pipe($.autoprefixer())
-    .pipe(gulp.dest(out.styles))
+gulp.task('docs:styles:build', () => (
+  gulp.src(docSrc.styleEntryFiles)
+    .pipe($.sass({includePaths: [docSrc.root]}))
+    .pipe($.autoprefixer(autoprefixerSettings))
+    .pipe(!prod ? passthrough() : $.cleanCss(cssCleanSettings))
+    .pipe(gulp.dest(docOut.styles))
 ))
 
-gulp.task('styles:watch', () => {
-  $.watch(src.styleGlobs, gulp.series('styles:build'))
+gulp.task('docs:styles:watch', () => {
+  $.watch(docSrc.styleGlobs, gulp.series('docs:styles:build'))
 })
 
 /**
  * Devserver + Scripts
  */
 
-gulp.task('devserver', () => {
+gulp.task('docs:devserver', () => {
   let proc
 
   process.on('exit', () => {
@@ -100,16 +139,18 @@ gulp.task('devserver', () => {
  */
 
 gulp.task('buildup', gulp.parallel(
-  'static:copy',
-  'html:build',
-  'styles:build'
+  'docs:static:copy',
+  'docs:html:build',
+  'docs:styles:build'
 ))
 
 gulp.task('watch', gulp.parallel(
-  'static:watch',
-  'html:watch',
-  'styles:watch',
-  'devserver'
+  'docs:static:watch',
+  'docs:html:watch',
+  'docs:styles:watch',
+  'docs:devserver'
 ))
 
-gulp.task('default', gulp.series('clear', gulp.series('buildup', 'watch')))
+gulp.task('build', gulp.series('docs:clear', gulp.parallel('buildup', 'docs:scripts:build')))
+
+gulp.task('default', gulp.series('docs:clear', gulp.series('buildup', 'watch')))

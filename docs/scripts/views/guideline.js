@@ -1,5 +1,5 @@
 import {PraxComponent} from 'prax'
-import {Button, ActionButton} from 'lib'
+import {Button, ActionButton} from 'purelab-ui'
 
 export class Section extends PraxComponent {
   subrender() {

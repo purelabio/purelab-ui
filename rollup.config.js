@@ -4,7 +4,7 @@ const external = ['react', 'react-dom', 'emerge', 'fpx']
 
 module.exports = [
   {
-    input: 'lib/scripts/index.js',
+    input: 'src/scripts/index.js',
     output: {file: 'es/purelab-ui.js', format: 'es'},
     external,
     plugins: [

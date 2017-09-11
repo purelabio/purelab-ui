@@ -12,10 +12,14 @@ const compiler = require('webpack')(extend(config, {
 }))
 
 bs.init({
-  startPath: '/',
+  startPath: '/purelab-ui/',
   server: {
-    baseDir: 'dist',
+    baseDir: 'gh-pages',
     middleware: [
+      (req, res, next) => {
+        req.url = req.url.replace(/^\/purelab-ui\//, '').replace(/^[/]*/, '/')
+        next()
+      },
       require('webpack-dev-middleware')(compiler, {
         publicPath: config.output.publicPath,
         stats: config.stats,
@@ -24,7 +28,7 @@ bs.init({
     ],
   },
   port: 23888,
-  files: 'dist',
+  files: 'gh-pages',
   open: false,
   online: false,
   ui: false,
