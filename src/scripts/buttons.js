@@ -67,3 +67,18 @@ export class ActionButton extends Component {
     )
   }
 }
+
+export class ChipButton extends Component {
+  render() {
+    const {className, children, ...props} = this.props
+
+    return (
+      <Button
+        className={className || 'pl-chip-button'}
+        {...props}
+        >
+        {children}
+      </Button>
+    )
+  }
+}

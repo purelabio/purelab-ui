@@ -124,6 +124,10 @@
       background-color: $pl-color-white-300;
     }
   }
+
+  .pl-chip-button & {
+    background-color: $pl-color-black-100;
+  }
 }
 
 @keyframes pl-ripple {
@@ -169,4 +173,17 @@
   &.disabled {
     background-color: mix($pl-color-white-300, $pl-color-accent);
   }
+}
+
+.pl-chip-button {
+  @extend .relative;
+  @extend .overflow-hidden;
+
+  @extend .padding-0x5-v;
+  @extend .padding-0x75-h;
+  @extend .font-small;
+  line-height: 1;
+  border-radius: 2rem;
+
+  @extend .busy-light-hard;
 }

@@ -7,3 +7,91 @@ body {
   background-color: $pl-color-primary;
   color: $pl-color-white;
 }
+
+.busy-transparent-gray {
+  @include transition;
+  color: $pl-color-black-600;
+
+  &:hover, &.hover,
+  &:active, &.active {
+    background-color: $pl-color-black-300;
+  }
+
+  &[disabled], &.disabled {
+    opacity: 0.5;
+  }
+}
+
+.busy-light-gray {
+  @extend .busy-transparent-gray;
+  background-color: $pl-color-black-100;
+}
+
+.busy-hard-gray {
+  @include transition;
+  background-color: $pl-color-black-500;
+  color: $pl-color-white;
+
+  &:hover, &.hover,
+  &:active, &.active {
+    background-color: $pl-color-black-600;
+  }
+
+  &[disabled], &.disabled {
+    opacity: 0.5;
+  }
+}
+
+// for placement on non-white backround only
+.busy-light-white {
+  @include transition;
+  background-color: $pl-color-white-100;
+  color: $pl-color-white;
+
+  &:hover, &.hover,
+  &:active, &.active {
+    background-color: $pl-color-white-300;
+  }
+
+  &[disabled], &.disabled {
+    opacity: 0.5;
+  }
+}
+
+.busy-hard-white {
+  @include transition;
+  background-color: $pl-color-white;
+  color: $pl-color-black-600;
+
+  &:hover, &.hover,
+  &:active, &.active {
+    background-color: $pl-color-white;
+    color: $pl-color-black-700;
+  }
+
+  &[disabled], &.disabled {
+    opacity: 0.5;
+  }
+
+  .theme-bg-primary & {
+    color: $pl-color-primary;
+  }
+}
+
+.busy-light-hard {
+  &:not([aria-pressed]) {
+    @extend .busy-light-gray;
+  }
+
+  &[aria-pressed] {
+    @extend .busy-hard-gray;
+  }
+
+  .theme-bg-primary &:not([aria-pressed]) {
+    @extend .busy-light-white;
+  }
+
+  .theme-bg-primary &[aria-pressed] {
+    @extend .busy-hard-white;
+  }
+}

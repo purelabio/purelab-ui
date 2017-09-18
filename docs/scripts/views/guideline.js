@@ -1,5 +1,5 @@
 import {PraxComponent} from 'prax'
-import {Button, ActionButton} from 'purelab-ui'
+import {Button, ActionButton, ChipButton} from 'purelab-ui'
 
 export class Section extends PraxComponent {
   subrender() {
@@ -81,6 +81,45 @@ export class ActionButtons extends PraxComponent {
         <ActionButton className='pl-action-button hover' />
         <ActionButton className='pl-action-button active' />
         <ActionButton className='pl-action-button' disabled />
+      </div>
+    )
+  }
+}
+
+export class ChipButtons extends PraxComponent {
+  subrender() {
+    return (
+      <div className='children-margin-1x25-v'>
+        <h3 className='font-small'>Normal</h3>
+        <div className='row-start-start children-margin-0x5-h'>
+          <ChipButton>
+            Normal
+          </ChipButton>
+          <ChipButton className='pl-chip-button hover'>
+            Hover
+          </ChipButton>
+          <ChipButton className='pl-chip-button active'>
+            Active
+          </ChipButton>
+          <ChipButton className='pl-chip-button' disabled>
+            Disabled
+          </ChipButton>
+        </div>
+        <h3 className='font-small'>Selected</h3>
+        <div className='row-start-start children-margin-0x5-h'>
+          <ChipButton aria-pressed>
+            Normal
+          </ChipButton>
+          <ChipButton className='pl-chip-button hover' aria-pressed>
+            Hover
+          </ChipButton>
+          <ChipButton className='pl-chip-button active' aria-pressed>
+            Active
+          </ChipButton>
+          <ChipButton className='pl-chip-button' disabled aria-pressed>
+            Disabled
+          </ChipButton>
+        </div>
       </div>
     )
   }
