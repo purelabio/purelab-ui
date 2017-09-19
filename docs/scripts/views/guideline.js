@@ -1,5 +1,5 @@
 import {PraxComponent} from 'prax'
-import {Button, ActionButton, ChipButton} from 'purelab-ui'
+import {Button, ActionButton, ChipButton, Checkbox, Radio, Switch, ToggleItem} from 'purelab-ui'
 
 export class Section extends PraxComponent {
   subrender() {
@@ -119,6 +119,36 @@ export class ChipButtons extends PraxComponent {
           <ChipButton className='pl-chip-button' disabled aria-pressed>
             Disabled
           </ChipButton>
+        </div>
+      </div>
+    )
+  }
+}
+
+export class Switches extends PraxComponent {
+  subrender() {
+    return (
+      <div className='children-margin-2-v'>
+        <div className='row-stretch'>
+          <div className='col-start-center children-margin-2-v'>
+            <Checkbox defaultChecked />
+            <Checkbox />
+          </div>
+          <div className='col-start-center children-margin-2-v'>
+            <Radio defaultChecked />
+            <Radio />
+          </div>
+          <div className='col-start-center children-margin-2-v'>
+            <Switch defaultChecked />
+            <Switch />
+          </div>
+        </div>
+        <div className='pl-toggle'>
+          <ToggleItem name='toggle'>1</ToggleItem>
+          <ToggleItem name='toggle'>2</ToggleItem>
+          <ToggleItem name='toggle'>3</ToggleItem>
+          <ToggleItem name='toggle'>4</ToggleItem>
+          <ToggleItem name='toggle'>5</ToggleItem>
         </div>
       </div>
     )

@@ -1,0 +1,237 @@
+$pl-checkbox-width: 20px;
+$pl-checkbox-height: $pl-checkbox-width;
+$pl-checkbox-border-width: 2px;
+
+$pl-radio-width: 20px;
+$pl-radio-height: $pl-radio-width;
+$pl-radio-dot-width: 8px;
+$pl-radio-dot-height: $pl-radio-dot-width;
+$pl-radio-border-width: 2px;
+
+$pl-switch-width: 40px;
+$pl-switch-height: $pl-switch-width / 2;
+$pl-switch-track-margin: 3px;
+$pl-switch-track-radius: $pl-switch-height - $pl-switch-track-margin * 2;
+$pl-switch-knob-width: $pl-switch-width / 2;
+$pl-switch-knob-height: $pl-switch-knob-width;
+$pl-switch-knob-shadow: 0 0 1px 0 $pl-color-black-300, 0 1px 1px 0 $pl-color-black-500;
+
+.pl-hidden-input {
+  @extend .abs;
+  right: 110%;
+}
+
+.pl-checkbox {
+  @extend .relative;
+  @extend .overflow-hidden;
+  @extend .row-center-center;
+  flex-shrink: 0;
+}
+.pl-checkbox-input {
+  @extend .pl-hidden-input;
+}
+.pl-checkbox-decorator {
+  @include transition;
+  @extend .overflow-hidden;
+  @extend .row-center-center;
+  @extend .cursor-pointer;
+  @extend .rounded;
+  width: $pl-checkbox-width;
+  height: $pl-checkbox-height;
+  border: $pl-checkbox-border-width solid $pl-color-black-600;
+  color: $pl-color-white-700;
+
+  &:hover {
+    border-color: $pl-color-primary;
+
+    .theme-bg-primary & {
+      border-color: $pl-color-white;
+    }
+  }
+
+  .pl-checkbox-input:checked + & {
+    background-color:  $pl-color-primary;
+    border-color: $pl-color-primary;
+
+    .theme-bg-primary & {
+      background-color:  $pl-color-white;
+      border-color: $pl-color-white;
+    }
+  }
+
+  .pl-checkbox-input[disabled] + & {
+    opacity: 0.5;
+  }
+
+  .theme-bg-primary & {
+    border-color: $pl-color-white-600;
+  }
+}
+.pl-checkbox-icon {
+  color: transparent;
+
+  .pl-checkbox-input:checked + .pl-checkbox-decorator & {
+    color:  $pl-color-white-700;
+
+    .theme-bg-primary & {
+      color:  $pl-color-primary;
+    }
+  }
+}
+
+.pl-radio {
+  @extend .relative;
+  @extend .overflow-hidden;
+  @extend .row-center-center;
+  flex-shrink: 0;
+}
+.pl-radio-input {
+  @extend .pl-hidden-input;
+}
+.pl-radio-decorator {
+  @include transition;
+  @extend .overflow-hidden;
+  @extend .row-center-center;
+  @extend .cursor-pointer;
+  @extend .circle;
+  width:  $pl-radio-width;
+  height: $pl-radio-height;
+  border: $pl-radio-border-width solid $pl-color-black-600;
+
+  &::before {
+    @extend .circle;
+    content: '';
+    width:  $pl-radio-dot-width;
+    height: $pl-radio-dot-height;
+  }
+
+  &:hover {
+    border-color: $pl-color-primary;
+
+    .theme-bg-primary & {
+      border-color: $pl-color-white;
+    }
+  }
+
+  .pl-radio-input:checked + & {
+    border-color: $pl-color-primary;
+
+    .theme-bg-primary & {
+      border-color: $pl-color-white;
+    }
+  }
+
+  .pl-radio-input:checked + &::before {
+    background-color:  $pl-color-primary;
+
+    .theme-bg-primary & {
+      background-color:  $pl-color-white;
+    }
+  }
+
+  .pl-radio-input[disabled] + & {
+    opacity: 0.5;
+  }
+
+  .theme-bg-primary & {
+    border-color: $pl-color-white-600;
+  }
+}
+
+.pl-switch {
+  @extend .relative;
+  @extend .row-start-center;
+  @extend .cursor-pointer;
+  width:  $pl-switch-width;
+  height: $pl-switch-height;
+}
+.pl-switch-input {
+  @extend .pl-hidden-input;
+  visibility: hidden;
+}
+.pl-switch-track {
+  @extend .abs-fit;
+  @extend .row-start-center;
+  margin: $pl-switch-track-margin;
+  border-radius: $pl-switch-track-radius;
+  background-color: $pl-color-black-400;
+
+  .theme-bg-primary & {
+    background-color: $pl-color-white-400;
+  }
+}
+.pl-switch-knob {
+  @include transition;
+  @extend .relative;
+  @extend .circle;
+  z-index: 1;
+  width:  $pl-switch-knob-width;
+  height: $pl-switch-knob-height;
+  background-color: #F2F2F2;
+  box-shadow: $pl-switch-knob-shadow;
+
+  .pl-switch-input:checked + & {
+    background-color:  $pl-color-accent;
+    transform: translateX(100%);
+  }
+
+  .pl-switch-input[disabled] + & {
+    background-color: $pl-color-accent-400;
+  }
+}
+
+.pl-toggle {
+  @extend .row-stretch;
+  @extend .overflow-hidden;
+  @extend .rounded;
+
+  & > :not(:last-child) {
+    margin-right: 1px;
+  }
+}
+.pl-toggle-item {
+  @extend .relative;
+  @extend .row-stretch;
+  @extend .overflow-hidden;
+}
+.pl-toggle-input {
+  @extend .pl-hidden-input;
+}
+.pl-toggle-decorator {
+  @extend .row-center-center;
+  @include transition;
+  @extend .padding-0x5;
+  @extend .weight-bold;
+  @extend .font-small;
+  @extend .cursor-pointer;
+  line-height: 1.5;
+  background-color: $pl-color-black-100;
+
+  &:hover {
+    background-color: $pl-color-black-300;
+
+    .theme-bg-primary & {
+      background-color: $pl-color-white-500;
+    }
+  }
+
+  .pl-toggle-input:checked + & {
+    @extend .rounded;
+    background-color: $pl-color-primary;
+    color: $pl-color-white;
+
+    .theme-bg-primary & {
+      background-color: $pl-color-white;
+      color: $pl-color-primary;
+    }
+  }
+
+  .pl-toggle-input[disabled] + & {
+    @extend .no-pointer-styles;
+    opacity: 0.5;
+  }
+
+  .theme-bg-primary & {
+    background-color: $pl-color-white-400;
+  }
+}
