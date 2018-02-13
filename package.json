@@ -31,7 +31,7 @@
     "rollup": "^0.49.2",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-uglify": "^2.0.1",
-    "stylebox": "github:aristovn/stylebox#642e9533c63f23a07ac0c78a74aea7874740b64e"
+    "stylebox": "0.0.13"
   },
   "peerDependencies": {
     "react": "*"
