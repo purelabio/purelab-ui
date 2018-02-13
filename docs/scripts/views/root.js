@@ -1,6 +1,4 @@
 import {PraxComponent} from 'prax'
-import {Section, FlatButtons, RaisedButtons, ActionButtons, ChipButtons,
-  Switches} from './guideline'
 
 export class Root extends PraxComponent {
   subrender () {
@@ -9,7 +7,7 @@ export class Root extends PraxComponent {
         <div className='flex-1'>
           <Section title='Buttons'>
             <ActionButtons />
-            <div className='row-center-start children-margin-4-h'>
+            <div className='row-center-start gaps-4-h'>
               <FlatButtons />
               <RaisedButtons />
             </div>

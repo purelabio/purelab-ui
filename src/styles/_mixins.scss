@@ -1,3 +1,0 @@
-@mixin transition($property: all, $duration: $pl-transition-duration-fast, $function: ease-out) {
-  transition: $property $duration $function;
-}

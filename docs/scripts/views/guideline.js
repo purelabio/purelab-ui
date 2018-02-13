@@ -1,22 +1,21 @@
 import {PraxComponent} from 'prax'
-import {Button, ActionButton, ChipButton, Checkbox, Radio, Switch, ToggleItem} from 'purelab-ui'
 
 export class Section extends PraxComponent {
   subrender() {
     const {title, single, children} = this.props
 
     return (
-      <div className='col-start-stretch padding-2 children-margin-2-v fg-black-600'>
+      <div className='col-start-stretch padding-2 gaps-2-v fg-black-600'>
         {!title ? null :
         <h2 className='weight-bold padding-2-h'>
           {title}
         </h2>}
         <div className='row-stretch'>
-          <div className='padding-2 children-margin-3-v'>
+          <div className='padding-2 gaps-3-v'>
             {children}
           </div>
           {single ? null :
-          <div className='padding-2 children-margin-3-v theme-bg-primary fg-white'>
+          <div className='padding-2 gaps-3-v theme-bg-primary fg-white'>
             {children}
           </div>}
         </div>
@@ -28,7 +27,7 @@ export class Section extends PraxComponent {
 export class FlatButtons extends PraxComponent {
   subrender() {
     return (
-      <div className='col-start-stretch children-margin-3-v'>
+      <div className='col-start-stretch gaps-3-v'>
         <h3 className='font-smaller text-center weight-bold'>
           Flat
         </h3>
@@ -52,7 +51,7 @@ export class FlatButtons extends PraxComponent {
 export class RaisedButtons extends PraxComponent {
   subrender() {
     return (
-      <div className='col-start-stretch children-margin-3-v'>
+      <div className='col-start-stretch gaps-3-v'>
         <h3 className='font-smaller text-center weight-bold'>
           Raised
         </h3>
@@ -76,7 +75,7 @@ export class RaisedButtons extends PraxComponent {
 export class ActionButtons extends PraxComponent {
   subrender() {
     return (
-      <div className='row-center-start children-margin-1-h'>
+      <div className='row-center-start gaps-1-h'>
         <ActionButton />
         <ActionButton className='pl-action-button hover' />
         <ActionButton className='pl-action-button active' />
@@ -89,9 +88,9 @@ export class ActionButtons extends PraxComponent {
 export class ChipButtons extends PraxComponent {
   subrender() {
     return (
-      <div className='children-margin-1x25-v'>
+      <div className='gaps-1x25-v'>
         <h3 className='font-small'>Normal</h3>
-        <div className='row-start-start children-margin-0x5-h'>
+        <div className='row-start-start gaps-0x5-h'>
           <ChipButton>
             Normal
           </ChipButton>
@@ -106,7 +105,7 @@ export class ChipButtons extends PraxComponent {
           </ChipButton>
         </div>
         <h3 className='font-small'>Selected</h3>
-        <div className='row-start-start children-margin-0x5-h'>
+        <div className='row-start-start gaps-0x5-h'>
           <ChipButton aria-pressed>
             Normal
           </ChipButton>
@@ -128,17 +127,17 @@ export class ChipButtons extends PraxComponent {
 export class Switches extends PraxComponent {
   subrender() {
     return (
-      <div className='children-margin-2-v'>
+      <div className='gaps-2-v'>
         <div className='row-stretch'>
-          <div className='col-start-center children-margin-2-v'>
+          <div className='col-start-center gaps-2-v'>
             <Checkbox defaultChecked />
             <Checkbox />
           </div>
-          <div className='col-start-center children-margin-2-v'>
+          <div className='col-start-center gaps-2-v'>
             <Radio defaultChecked />
             <Radio />
           </div>
-          <div className='col-start-center children-margin-2-v'>
+          <div className='col-start-center gaps-2-v'>
             <Switch defaultChecked />
             <Switch />
           </div>

@@ -18,7 +18,7 @@ $pl-switch-knob-shadow: 0 0 1px 0 $pl-color-black-300, 0 1px 1px 0 $pl-color-bla
 
 .pl-hidden-input {
   @extend .abs;
-  right: 110%;
+  right: 120%;
 }
 
 .pl-checkbox {
@@ -31,7 +31,7 @@ $pl-switch-knob-shadow: 0 0 1px 0 $pl-color-black-300, 0 1px 1px 0 $pl-color-bla
   @extend .pl-hidden-input;
 }
 .pl-checkbox-decorator {
-  @include transition;
+  @include sb-transition;
   @extend .overflow-hidden;
   @extend .row-center-center;
   @extend .cursor-pointer;
@@ -89,7 +89,7 @@ $pl-switch-knob-shadow: 0 0 1px 0 $pl-color-black-300, 0 1px 1px 0 $pl-color-bla
   @extend .pl-hidden-input;
 }
 .pl-radio-decorator {
-  @include transition;
+  @include sb-transition;
   @extend .overflow-hidden;
   @extend .row-center-center;
   @extend .cursor-pointer;
@@ -161,7 +161,7 @@ $pl-switch-knob-shadow: 0 0 1px 0 $pl-color-black-300, 0 1px 1px 0 $pl-color-bla
   }
 }
 .pl-switch-knob {
-  @include transition;
+  @include sb-transition;
   @extend .relative;
   @extend .circle;
   z-index: 1;
@@ -199,7 +199,7 @@ $pl-switch-knob-shadow: 0 0 1px 0 $pl-color-black-300, 0 1px 1px 0 $pl-color-bla
 }
 .pl-toggle-decorator {
   @extend .row-center-center;
-  @include transition;
+  @include sb-transition;
   @extend .padding-0x5;
   @extend .weight-bold;
   @extend .font-small;

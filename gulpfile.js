@@ -19,7 +19,11 @@ const docSrc = {
   static: 'docs/static/**/*',
   staticFonts: 'node_modules/mdi/fonts/**/*',
   staticFontsBase: 'node_modules/mdi',
-  styleGlobs: ['docs/styles/**/*.scss', 'src/styles/**/*.scss'],
+  styleGlobs: [
+    'node_modules/stylebox/**/*.scss',
+    'docs/styles/**/*.scss',
+    'src/styles/**/*.scss',
+  ],
   styleEntryFiles: ['docs/styles/main.scss'],
 }
 

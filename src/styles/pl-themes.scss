@@ -9,7 +9,7 @@ body {
 }
 
 .busy-transparent-gray {
-  @include transition;
+  @include sb-transition;
   color: $pl-color-black-600;
 
   &:hover, &.hover,
@@ -28,7 +28,7 @@ body {
 }
 
 .busy-hard-gray {
-  @include transition;
+  @include sb-transition;
   background-color: $pl-color-black-500;
   color: $pl-color-white;
 
@@ -44,7 +44,7 @@ body {
 
 // for placement on non-white backround only
 .busy-light-white {
-  @include transition;
+  @include sb-transition;
   background-color: $pl-color-white-100;
   color: $pl-color-white;
 
@@ -59,7 +59,7 @@ body {
 }
 
 .busy-hard-white {
-  @include transition;
+  @include sb-transition;
   background-color: $pl-color-white;
   color: $pl-color-black-600;
 
