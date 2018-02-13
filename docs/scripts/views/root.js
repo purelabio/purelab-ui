@@ -1,4 +1,6 @@
 import {PraxComponent} from 'prax'
+import {Section, FlatButtons, RaisedButtons, ActionButtons, ChipButtons,
+  Switches} from './guideline'
 
 export class Root extends PraxComponent {
   subrender () {
